@@ -4,10 +4,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+    # Hier werden die Daten an index.html übergeben
     items = helper.get_all()
     return render_template('index.html', items=items)
 
-
+# Hier wird definiert, auf welche URLs die Applikation reagiert
 @app.route('/add', methods=["POST"])
 def add():
     text = request.form.get("text")
