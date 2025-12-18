@@ -7,16 +7,25 @@ assignees: ''
 
 ---
 
-# Acceptance Criteria
+## Acceptance Criteria
 
-|     Given      |       When        |          Then          |
-| :------------: | :---------------: | :--------------------: |
-| Some situation | Something happens | Something else happens |
+| Given | When | Then |
+| :--- | :--- | :--- |
+| A user has created a todo | The user adds a due date to the todo | The due date is saved and displayed with the todo |
+| A todo has a due date | The current date is past the due date | The todo is visually marked as overdue |
+| A user views the todo list | Todos have due dates | Todos are sorted by due date |
 
-# Subtasks
-- [x] First subtask
-- [ ] Second subtask
-- [ ] Third subtask
+---
 
-# Further information
-Try to keep your user stories as expressive as possible. The less subtasks and further information are necessary to understand it, the better. Ideally, you should be able to delete these two sections; but, of course, keep them if necessary.
+## Subtasks
+- [x] Define how a due date is represented in a todo (data model)
+- [ ] Extend the user interface to allow entering a due date
+- [ ] Display the due date next to each todo
+- [ ] Add visual feedback for overdue todos
+
+---
+
+## Further Information
+- Due dates should be optional so existing todos remain valid  
+- The feature should not break existing functionality  
+- Visual indicators for overdue todos should be clearly distinguishable but not intrusive
