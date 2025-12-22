@@ -24,11 +24,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: set lower case owner name
-        id: smileyfish
+        id: lowercase_username
         run: |
           echo "actor=${OWNER,,}" >> $GITHUB_OUTPUT
         env:
-          OWNER: ${{ github.repository_owner }}
+          OWNER: '${{ github.repository_owner }}'
         shell: bash
 
       - name: Build and push Docker image
