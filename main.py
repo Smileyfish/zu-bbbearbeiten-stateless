@@ -2,6 +2,14 @@ import helper
 from flask import Flask, request, Response, render_template, redirect, url_for
 app = Flask(__name__)
 
+@app.route("/download")
+def get_csv():
+    return Response(
+        helper.get_csv(),
+        mimetype="text/csv",
+        headers={"Content-disposition": "attachment; filename=zu-bbbearbeiten.csv"},
+    )
+
 
 @app.route("/")
 def index():
