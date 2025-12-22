@@ -1,4 +1,4 @@
-name: Release from tag
+name: Release from tag with build
 
 on:
   push:
@@ -12,8 +12,25 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout repository
+      - uses: ghalactic/github-release-from-tag@v5
+
+  build-windows:
+    runs-on: windows-latest
+    needs: release
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Create GitHub Release
-        uses: ghalactic/github-release-from-tag@v5
+      - name: Build with PyInstaller
+        uses: sayyid5416/pyinstaller@v1
+        with:
+          spec: main.spec
+
+      - name: Upload executable
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload ${{ github.ref_name }} ./dist/main.exe
