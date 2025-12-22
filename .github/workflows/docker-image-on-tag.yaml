@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "actor=${OWNER,,}" >> $GITHUB_OUTPUT
         env:
-          OWNER: '${{ github.repository_owner }}'
+          OWNER: ${{ github.repository_owner }}
         shell: bash
 
       - name: Build and push Docker image
