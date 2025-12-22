@@ -17,11 +17,14 @@ def index():
     return render_template('index.html', items=items)
 
 
-@app.route('/add', methods=["POST"])
+
+@app.route("/add", methods=["POST"])
 def add():
     text = request.form.get("text")
     date = request.form.get("deadline")
-    helper.add(text, date)
+    category = request.form.get("category")
+    description = request.form.get("description")
+    helper.add(text, date=date, category=category, description=description)
     return redirect(url_for("index"))
 
 
